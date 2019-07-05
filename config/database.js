@@ -16,7 +16,8 @@ module.exports = {
   | interacting with SQL databases.
   |
   */
-  connection: Env.get('DB_CONNECTION', 'sqlite'),
+  connection: Env.get('MONGO_DB_CONNECTION', 'mongodb'),
+  // connection: Env.get('DB_CONNECTION', 'sqlito'),
 
   /*
   |--------------------------------------------------------------------------
@@ -80,5 +81,19 @@ module.exports = {
       database: Env.get('DB_DATABASE', 'adonis')
     },
     debug: Env.get('DB_DEBUG', false)
+  },
+
+  mongodb: {
+    client: 'mongodb',
+    connectionString: Env.get('DB_CONNECTION_STRING', ''),
+    connection: {
+      host: Env.get('DB_HOST', 'localhost'),
+      port: Env.get('MONGO_DB_PORT', 27017),
+      username: Env.get('MONGO_DB_USER', 'admin'),
+      password: Env.get('MONGO_DB_PASSWORD', ''),
+      database: Env.get('DB_DATABASE', 'adonis'),
+      options: {
+      }
+    }
   }
 }
