@@ -16,8 +16,16 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+/* 
+  DOCUMNTACIÓN MONGOOSE
+  https://mongoosejs.com/docs/queries.html
+*/
+
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
 Route.get('/convo', 'PruebaController.prueba');
+
+Route.resource('grupos', 'GrupoController');
+Route.put('/join', 'GrupoController.unirseOAbandonar');

@@ -16,8 +16,8 @@ module.exports = {
   | interacting with SQL databases.
   |
   */
-  connection: Env.get('MONGO_DB_CONNECTION', 'mongodb'),
-  // connection: Env.get('DB_CONNECTION', 'sqlito'),
+  // connection: Env.get('MONGO_DB_CONNECTION', 'mongodb'),
+  connection: Env.get('DB_CONNECTION', 'sqlite'),
 
   /*
   |--------------------------------------------------------------------------

@@ -9,6 +9,7 @@ class GrupoUserSchema extends Schema {
       table.increments()
       table.integer('grupo_id').unsigned().references('id').inTable('grupos')
       table.integer('user_id').unsigned().references('id').inTable('users')
+      table.boolean('baja').defaultTo(false)
       table.timestamps()
     })
   }
