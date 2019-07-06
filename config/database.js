@@ -84,16 +84,17 @@ module.exports = {
   },
 
   mongodb: {
-    client: 'mongodb',
-    connectionString: Env.get('DB_CONNECTION_STRING', ''),
+    connectionString: Env.get('MONGO_CONNECTION_STRING', null),
     connection: {
-      host: Env.get('DB_HOST', 'localhost'),
-      port: Env.get('MONGO_DB_PORT', 27017),
-      username: Env.get('MONGO_DB_USER', 'admin'),
-      password: Env.get('MONGO_DB_PASSWORD', ''),
-      database: Env.get('DB_DATABASE', 'adonis'),
+      host: Env.get('MONGO_HOST', 'localhost'),
+      port: Env.get('MONGO_PORT', 27017),
+      user: Env.get('MONGO_USER', 'admin'),
+      pass: Env.get('MONGO_PASSWORD', ''),
+      database: Env.get('MONGO_DATABASE', 'adonis'),
       options: {
-      }
+        // All options can be found at http://mongoosejs.com/docs/connections.html
+      },
+      debug: false
     }
-  }
+  },
 }

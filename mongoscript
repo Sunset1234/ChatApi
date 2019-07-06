@@ -1,0 +1,16 @@
+> use chat;
+
+> db.createCollection('user_chats', {autoIndexId: true});
+
+> db.createCollection('group_chats', {autoIndexId: true})
+
+para insertar:
+
+> db.user_chats.insert({sender_id: "1", receiver_id: "2", message_data:{message: "hola", media: "https://pbs.twimg.com/profile_images/862669345360678912/IyLo-m6k_400x400.jpg"}})
+
+> db.grupo_chats.insert({group_id: "1", sender_id: "1", message_data: {message: "tu madre", media: "https://pbs.twimg.com/profile_images/862669345360678912/IyLo-m6k_400x400.jpg"}})
+
+
+
+
+
