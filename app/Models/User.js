@@ -7,9 +7,26 @@ const Model = use('Model')
 const Hash = use('Hash')
 
 class User extends Model {
+
+  // static get computed () {
+  //   return ['fullname'];
+  // }
+
+  // getFullname ({user}) {
+  //   console.log(user)
+  // }
+
+  grupos() {
+    return this.belongsToMany('App/Models/Grupo')
+                 .pivotTable('grupo_users');
+  }
+
+  detalles() {
+    return this.hasOne('App/Models/InfoUser');
+  }
+
   static boot () {
     super.boot()
-
     /**
      * A hook to hash the user password before saving
      * it to the database.
@@ -19,6 +36,10 @@ class User extends Model {
         userInstance.password = await Hash.make(userInstance.password)
       }
     })
+  }
+
+  static get hidden () {
+    return ['password', 'updated_at', 'pivot', 'baja']
   }
 
   /**

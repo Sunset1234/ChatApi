@@ -15,6 +15,7 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
+const User = use('App/Models/User');
 
 /* 
   DOCUMNTACIÓN MONGOOSE
@@ -29,3 +30,16 @@ Route.get('/convo', 'PruebaController.prueba');
 
 Route.resource('grupos', 'GrupoController');
 Route.put('/join', 'GrupoController.unirseOAbandonar');
+
+Route.post('/registro', 'AuthController.registro');
+
+Route.post('/info/:id', 'UserController.guardarInfo');
+Route.put('/info/:id', 'UserController.updateInfo');
+
+
+Route.get('/user/:id', async ({params, request, response}) => {
+
+  var kek = await User.query().where('id', params.id).with('grupos').with('detalles').first();
+
+  return response.status(200).json({user: kek});
+})

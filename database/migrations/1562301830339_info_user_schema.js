@@ -7,7 +7,7 @@ class InfoUserSchema extends Schema {
   up () {
     this.create('info_users', (table) => {
       table.increments()
-      table.integer('user_id').unsigned().references('id').inTable('users')
+      table.integer('user_id').unsigned().references('id').inTable('users').unique()
       table.string('nombres', 254)
       table.string('apellidos', 254)
     })

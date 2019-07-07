@@ -55,7 +55,7 @@ class GrupoController {
   async show ({ params, response }) {
     const id = params.id;
 
-    const detalles_grupo = await Grupo.find(id);
+    const detalles_grupo = await Grupo.query().where('id', id).with('usuarios').first();
     
     return response.status(200).json({grupo: detalles_grupo});
   }
@@ -110,22 +110,27 @@ class GrupoController {
   async unirseOAbandonar ({ request, response }) {
     var { user_id, grupo_id } = request.all();
 
-    var exists = await GrupoUser.query().where('user_id', '=', user_id).where('grupo_id', '=', grupo_id).first();
-    console.log('--------------------------');
-    console.log(exists);
+    var status = null;
+
+    var exists = await GrupoUser.query().where('user_id', '=', user_id)
+                                        .where('grupo_id', '=', grupo_id)
+                                        .first();
+
     //se crea la relación grupo-usuarios si no se tiene para estos id
     if (!exists) {
       const user_grupo = await GrupoUser.create({
         grupo_id: grupo_id,
         user_id: user_id
       });
+      status = user_grupo.baja;
     } else {
-      
+      //si existe la relación se da de baja (Sale) si es falso o viceversa
+      exists.baja = exists.baja ? false : true;
+      exists.save();
+      status = exists.baja;
     }
 
-    // await grupo.save();
-
-    // return response.status(201).json({msg: 'Grupo actualizado con éxito', grupo: grupo});
+    return response.status(200).json({msg: 'Actualizado', status: status});
   }
 }
 
