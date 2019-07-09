@@ -18,7 +18,8 @@ const providers = [
   '@adonisjs/lucid/providers/LucidProvider',
   '@adonisjs/websocket/providers/WsProvider',
   // 'lucid-mongo/providers/LucidMongoProvider'
-  'adonis-mongoose-model/providers/MongooseProvider'
+  'adonis-mongoose-model/providers/MongooseProvider',
+  '@adonisjs/drive/providers/DriveProvider'
 ]
 
 /*
