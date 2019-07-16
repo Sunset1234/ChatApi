@@ -30,8 +30,10 @@ Route.get('/convo', 'PruebaController.prueba');
 
 Route.resource('grupos', 'GrupoController');
 Route.put('/join', 'GrupoController.unirseOAbandonar');
+Route.get('/gruposs/:id', 'GrupoController.showAll');
 
 Route.post('/registro', 'AuthController.registro');
+Route.post('/login', 'AuthController.login');
 
 Route.post('/info/:id', 'UserController.guardarInfo');
 Route.put('/info/:id', 'UserController.updateInfo');
@@ -39,7 +41,12 @@ Route.put('/info/:id', 'UserController.updateInfo');
 
 Route.get('/user/:id', async ({params, request, response}) => {
 
-  var kek = await User.query().where('id', params.id).with('grupos').with('detalles').first();
+  var kek = await User.query().where('id', params.id)
+  .with('grupos')
+  .with('detalles').first();
 
   return response.status(200).json({user: kek});
 })
+
+
+//yum -y-update

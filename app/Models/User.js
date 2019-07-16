@@ -9,11 +9,17 @@ const Hash = use('Hash')
 class User extends Model {
 
   // static get computed () {
-  //   return ['fullname'];
+  //   return ['grupos'];
   // }
 
-  // getFullname ({user}) {
-  //   console.log(user)
+  // getGrupos() {
+  //   // return this.grupos();
+  //   var grupos = this.grupos();
+
+  //   // console.log(grupos.fetch());
+  //   grupos.fetch().then(data => {
+  //     console.log(data.toJSON());
+  //   })
   // }
 
   grupos() {

@@ -2,6 +2,7 @@
 
 const Grupo = use('App/Models/Grupo');
 const GrupoUser = use('App/Models/GrupoUser');
+const User = use('App/Models/User');
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -21,9 +22,25 @@ class GrupoController {
    */
   async index ({ request, response, params }) {
     //grupos para un usuario
+    console.log(params.id);
 
 
 
+
+
+  }
+
+    /**
+   * Grupos de un usuario
+   * GET gruposs/:id
+   *
+   * @param {object} ctx
+   * @param {Response} ctx.response
+   */
+  async showAll ({ params, response }) {    
+    const data = await User.query().where('id', params.id).with('grupos').first();
+
+    return response.status(200).json({"grupos": data.toJSON().grupos});
   }
 
   /**
