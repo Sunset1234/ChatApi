@@ -19,7 +19,8 @@ const providers = [
   '@adonisjs/websocket/providers/WsProvider',
   // 'lucid-mongo/providers/LucidMongoProvider'
   'adonis-mongoose-model/providers/MongooseProvider',
-  '@adonisjs/drive/providers/DriveProvider'
+  '@adonisjs/drive/providers/DriveProvider',
+  'adonis-4-mongoose/provider/Mongoose'
 ]
 
 /*
@@ -49,7 +50,9 @@ const aceProviders = [
 |   { Route: 'Adonis/Src/Route' }
 |
 */
-const aliases = {}
+const aliases = {
+  Mongoose: 'Adonis/Addons/AdonisMongoose'
+}
 
 /*
 |--------------------------------------------------------------------------

@@ -17,7 +17,7 @@
 const Route = use('Route')
 const User = use('App/Models/User');
 
-/* 
+/*
   DOCUMNTACIÓN MONGOOSE
   https://mongoosejs.com/docs/queries.html
 */
@@ -43,3 +43,9 @@ Route.get('/user/:id', async ({params, request, response}) => {
 
   return response.status(200).json({user: kek});
 })
+
+/**
+ * rutas con mongo
+*/
+Route.get('/chat','ChatController.ver');
+Route.post('/chat','ChatController.guardar');

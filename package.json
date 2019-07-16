@@ -26,6 +26,7 @@
     "@adonisjs/ignitor": "^2.0.8",
     "@adonisjs/lucid": "^6.1.3",
     "@adonisjs/websocket": "^1.0.11",
+    "adonis-4-mongoose": "^1.0.8",
     "adonis-mongoose-model": "^3.0.1",
     "pg": "^7.11.0",
     "sqlite3": "^4.0.9"
