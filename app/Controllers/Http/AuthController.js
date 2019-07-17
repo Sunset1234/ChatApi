@@ -24,6 +24,7 @@ class AuthController {
         const { nickname, password } = request.all();
         console.log("1")
         await auth.attempt(nickname, password);
+        debugger
         console.log("2")
         let token = await this.CrearToken(nickname);
         console.log("3")
