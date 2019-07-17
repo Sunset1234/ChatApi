@@ -26,12 +26,16 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
+
+Route.post('/Registro', 'AuthController.Registro');
+Route.post('/Login', 'AuthController.Login');
+
 Route.get('/convo', 'PruebaController.prueba');
 
 Route.resource('grupos', 'GrupoController');
 Route.put('/join', 'GrupoController.unirseOAbandonar');
 
-Route.post('/registro', 'AuthController.registro');
+
 
 Route.post('/info/:id', 'UserController.guardarInfo');
 Route.put('/info/:id', 'UserController.updateInfo');
@@ -49,3 +53,6 @@ Route.get('/user/:id', async ({params, request, response}) => {
 */
 Route.get('/chat','ChatController.ver');
 Route.post('/chat','ChatController.guardar');
+
+/*-----------------VER USUARIOS-------------------*/
+Route.post('/GetUsuarios','UserController.GetUsuarios');
