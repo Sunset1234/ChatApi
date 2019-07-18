@@ -1,6 +1,7 @@
 'use strict'
 
-const Chat = use ('App/Models/Chat')
+const Chat = use ('App/Models/Chat');
+
 class ChatController {
   async guardar({response,request}){
     var {id,mensaje,tipo} = request.all();

@@ -49,3 +49,7 @@ Route.get('/user/:id', async ({params, request, response}) => {
 */
 Route.get('/chat','ChatController.ver');
 Route.post('/chat','ChatController.guardar');
+
+
+Route.get('/grupo/:id','GrupoChatController.show');
+Route.post('/grupo','GrupoChatController.store');
