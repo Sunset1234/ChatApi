@@ -21,4 +21,7 @@ Ws.channel('chat', ({ socket }) => {
 
 
 /*-------Ruta para contactos nuevos----------*/
-Ws.channel('Contactos','UsuarioController')
+Ws.channel('Contactos','UsuarioController');
+
+//mensajes de un grupo
+Ws.channel('grupo:*', 'GrupoController');
