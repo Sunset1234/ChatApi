@@ -1,6 +1,7 @@
 'use strict'
 
 const InfoUser = use('App/Models/InfoUser');
+const User = use('App/Models/User');
 
 class UserController {
     async guardarInfo ({params, request, response}) {
@@ -27,6 +28,12 @@ class UserController {
 
         return response.status(200).json({msg: 'Información actualizada con éxito', info: info});
     }
+
+    async GetUsuarios({request,response}){
+        var todos= await User.all();
+        return response.status(200).json(todos);
+    }
+
 }
 
 module.exports = UserController
