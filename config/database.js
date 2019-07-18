@@ -81,20 +81,5 @@ module.exports = {
       database: Env.get('DB_DATABASE', 'adonis')
     },
     debug: Env.get('DB_DEBUG', false)
-  },
-
-  mongodb: {
-    client: 'mongodb',
-    connectionString: Env.get('MONGO_CONNECTION_STRING', 'mongodb://myUserAdmin:abc123@127.0.0.1:27017/chat'),
-    connection: {
-      host: Env.get('MONGO_HOST', '127.0.0.1'),
-      port: Env.get('MONGO_PORT', 27017),
-      username: Env.get('MONGO_USER', 'myUserAdmin'),
-      password: Env.get('MONGO_PASSWORD', 'abc123'),
-      database: Env.get('MONGO_DATABASE', 'chat'),
-      options: {
-        useNewUrlParser: true
-      }
-    }
   }
 }
