@@ -46,7 +46,9 @@ Route.put('/info/:id', 'UserController.updateInfo');
 Route.get('/chat','ChatController.ver');
 Route.post('/chat','ChatController.guardar');
 
+
 Route.post('/chats','ChatController.buscar');
+Route.post('/mensaje','ChatController.guardarMensaje')
 
 Route.get('/grupo/:id','GrupoChatController.show');
 Route.post('/grupopost','GrupoChatController.store');

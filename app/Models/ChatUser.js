@@ -4,8 +4,8 @@
 const mongoose = use('Mongoose')
 
 let userSchema = mongoose.Schema({
-  chatUser: {type: Schema.Types.ObjectId, ref: 'Chat'},
-  mensaje: [{ mensaje:String,tipo:String}]
+  chatUser: String,
+  mensaje: [{ mensaje:String,tipo:String,emisor:String}]
 }, {
   timestamps: true
 })

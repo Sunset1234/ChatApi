@@ -4,7 +4,7 @@ const mongoose = use('Mongoose')
 
 let userSchema = mongoose.Schema({
   emisor: String,
-  remitentes:[{id:String}]
+  remitentes:[{id:String, nickname:String}]
 }, {
   timestamps: true
 })
