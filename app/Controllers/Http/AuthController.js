@@ -49,8 +49,6 @@ class AuthController {
         debugger
         const cabecera = request.header('autorizacion');
 
-        console.log(cabecera);
-
         if (typeof cabecera !== 'undefined') {
             var split = cabecera.split(" ");
             request.token = split[0];

@@ -17,7 +17,7 @@ module.exports = {
   |
   */
   // connection: Env.get('MONGO_DB_CONNECTION', 'mongodb'),
-  connection: Env.get('DB_CONNECTION', 'sqlite'),
+  connection: Env.get('DB_CONNECTION', 'pg'),
 
   /*
   |--------------------------------------------------------------------------
