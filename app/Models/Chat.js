@@ -1,13 +1,13 @@
-
 'use strict'
 
 const mongoose = use('Mongoose')
 
 let userSchema = mongoose.Schema({
-  usuarios: [{ id: String, }],
-  mensaje: [{ mensaje:String,tipo:String}]
+  emisor: String,
+  remitentes:[{id:String}]
 }, {
   timestamps: true
 })
 
 module.exports = mongoose.model('Chat', userSchema)
+
