@@ -33,7 +33,7 @@ class AuthController {
 
         return response.status(200).json({
             token: token, 
-            jugador: jugador.id,
+            id: jugador.id,
             nick: jugador.nickname
         });
     }
@@ -43,6 +43,29 @@ class AuthController {
         var token = jwt.sign({jugador}, 'LAMEv1');
 
         return token;
+    }
+
+    async VerificarToken({request, response}) {
+        debugger
+        const cabecera = request.header('autorizacion');
+
+        console.log(cabecera);
+
+        if (typeof cabecera !== 'undefined') {
+            var split = cabecera.split(" ");
+            request.token = split[0];
+        } else {
+            return false;
+        }
+
+        try {
+            var p = jwt.verify(request.token, "LAMEv1");
+
+            return p.hasOwnProperty('jugador');
+        } catch(err) {
+            return false;
+        }
+
     }
 
 }

@@ -29,6 +29,7 @@ Route.get('/', () => {
 
 Route.post('/Registro', 'AuthController.Registro');
 Route.post('/Login', 'AuthController.Login');
+Route.get('/Verificar','AuthController.VerificarToken')
 
 Route.get('/convo', 'PruebaController.prueba');
 
@@ -55,4 +56,4 @@ Route.get('/chat','ChatController.ver');
 Route.post('/chat','ChatController.guardar');
 
 /*-----------------VER USUARIOS-------------------*/
-Route.post('/GetUsuarios','UserController.GetUsuarios');
+Route.post('/GetUsuarios/:id','UserController.GetUsuarios');

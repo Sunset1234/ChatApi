@@ -2,6 +2,7 @@
 
 const InfoUser = use('App/Models/InfoUser');
 const User = use('App/Models/User');
+const DB = use('Database');
 
 class UserController {
     async guardarInfo ({params, request, response}) {
@@ -29,9 +30,10 @@ class UserController {
         return response.status(200).json({msg: 'Información actualizada con éxito', info: info});
     }
 
-    async GetUsuarios({request,response}){
-        var todos= await User.all();
-        return response.status(200).json(todos);
+    async GetUsuarios({request,response,params}){
+        const id=params.id;
+        const users = await DB.from('users').where('id','<>', id);
+        return response.status(200).json(users);
     }
 
 }
