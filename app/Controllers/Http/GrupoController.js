@@ -1,5 +1,6 @@
 'use strict'
 
+const User = use('App/Models/User');
 const Grupo = use('App/Models/Grupo');
 const GrupoUser = use('App/Models/GrupoUser');
 
@@ -58,6 +59,19 @@ class GrupoController {
     const detalles_grupo = await Grupo.query().where('id', id).with('usuarios').first();
     
     return response.status(200).json({grupo: detalles_grupo});
+  }
+
+    /**
+   * Trae grupos de un usuario
+   * GET grupos/:id
+   *
+   * @param {object} ctx
+   * @param {Response} ctx.response
+   */
+  async showAll ({ params, response }) {
+    var grupos = await User.query().where('id', params.id).with('grupos').first();
+
+    return response.status(200).json({grupos: grupos.toJSON().grupos});
   }
 
   /**

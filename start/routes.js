@@ -36,18 +36,10 @@ Route.get('/convo', 'PruebaController.prueba');
 Route.resource('grupos', 'GrupoController');
 Route.put('/join', 'GrupoController.unirseOAbandonar');
 
-
+Route.get('/gruposu/:id', 'GrupoController.showAll');
 
 Route.post('/info/:id', 'UserController.guardarInfo');
 Route.put('/info/:id', 'UserController.updateInfo');
-
-
-Route.get('/user/:id', async ({params, request, response}) => {
-
-  var kek = await User.query().where('id', params.id).with('grupos').with('detalles').first();
-
-  return response.status(200).json({user: kek});
-})
 
 /**
  * rutas con mongo
@@ -55,5 +47,8 @@ Route.get('/user/:id', async ({params, request, response}) => {
 Route.get('/chat','ChatController.ver');
 Route.post('/chat','ChatController.guardar');
 
+
+Route.get('/grupo/:id','GrupoChatController.show');
+Route.post('/grupopost','GrupoChatController.store');
 /*-----------------VER USUARIOS-------------------*/
 Route.post('/GetUsuarios/:id','UserController.GetUsuarios');
