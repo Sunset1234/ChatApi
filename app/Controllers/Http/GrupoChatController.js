@@ -9,6 +9,8 @@ class GrupoChatController {
         var { grupo_id, emisor_id, mensaje, tipo } = request.all();
         console.log("ENVIAMOS DATOS CHINGADO")
         //estaría mejor sacar el nombre con la mierda del Auth no?
+
+        console.log(request.all());
         var emisor_nombre = await User.find(emisor_id);
         emisor_nombre = emisor_nombre.nickname;
 
