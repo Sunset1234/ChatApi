@@ -55,3 +55,5 @@ Route.get('/grupo/:id','GrupoChatController.show');
 Route.post('/grupopost','GrupoChatController.store');
 /*-----------------VER USUARIOS-------------------*/
 Route.post('/GetUsuarios/:id','UserController.GetUsuarios');
+/*-----------------------ARCHIVOS--------------------- */
+Route.post('/archivos','ArchivoController.archivos');
