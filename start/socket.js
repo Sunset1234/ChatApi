@@ -25,3 +25,6 @@ Ws.channel('Contactos','UsuarioController');
 
 //mensajes de un grupo
 Ws.channel('grupo:*', 'GrupoController');
+
+//mensaje normal a una persona
+Ws.channel('mensaje:*','MensajeController')
