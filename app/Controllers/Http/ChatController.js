@@ -7,34 +7,32 @@ class ChatController {
   async buscar({response,request}){
     let {emisor,remitente} = request.all();
     let chat;
+    let mensaje;
     await Chat.find({'emisor': emisor.id,'remitentes': { $elemMatch: {id:remitente.id}}},(err,encontrado)=>{
         if( encontrado.length>0){
           chat = encontrado[0];
         } else{
-          chat =  this.nuevoChat(emisor,remitente);
+          chat = this.nuevoChat(emisor,remitente);
         }
 
       });
-
-    return response.status(200).json({chat});
+      console.log(chat._id);
+      mensaje= this.historial(chat._id);
+    return response.status(200).json({chat, mensaje});
   }
     async nuevoChat(emisor,remitente){
       let chat = new Chat();
       chat.emisor = emisor.id;
       chat.remitentes.push({id:remitente.id, nickname:remitente.nickname})
       await chat.save();
+      return chat;
     }
-   async historial({response,request}){
-        await ChatUser.find({'chatUser': chat._id},(err,datos)=>{
-          if(datos.length>0){
-            mensajes=datos;
-          }
-          else{
-            mensajes= null;
-          }
+    async historial(idchat){
+        await ChatUser.find({'chatUser': idchat},(err,datos)=>{
+         return datos;
       });
-      return response.status(200).json({mensaje})
     }
+
    async guardarMensaje({response,request}){
     var {idChat,mensaje}= request.all();
     var guardado;
