@@ -48,7 +48,10 @@ Route.get('/chat','ChatController.ver');
 Route.post('/chat','ChatController.guardar');
 
 
-Route.get('/grupo/:id', 'GrupoChatController.show');
-Route.post('/grupopost', 'GrupoChatController.store');
+Route.post('/chats','ChatController.buscar');
+Route.post('/mensaje','ChatController.guardarMensaje')
+
+Route.get('/grupo/:id','GrupoChatController.show');
+Route.post('/grupopost','GrupoChatController.store');
 /*-----------------VER USUARIOS-------------------*/
 Route.post('/GetUsuarios/:id','UserController.GetUsuarios');
