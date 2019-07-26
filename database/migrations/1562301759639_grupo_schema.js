@@ -10,6 +10,7 @@ class GrupoSchema extends Schema {
       table.string('nombre_grupo', 254)
       table.text('descripcion')
       table.boolean('baja').defaultTo(false)
+      table.string('tipo',10)
       table.timestamps()
     })
   }
