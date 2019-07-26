@@ -85,8 +85,10 @@ class GrupoController {
           return item !== data.usuario;
         });
       };
-
     });
+
+    grupos = unique;
+
     this.socket.broadcastToAll('notescribiendo', unique);
   }
 
