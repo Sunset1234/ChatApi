@@ -12,32 +12,33 @@ class ChatController {
   async buscar({response,request}){
     let {emisor,remitente} = request.all();
     var chat;
+    var existente;
     chat = await this.busca_grupo(emisor,remitente);
-    console.log(chat.length);
-    if(chat.length==0){
-      console.log('no existe esta baina')
-    chat = await this.nuevoChat(emisor,remitente)
+    //foreach para buscar si se encuentran los dos usuarios en un grupo
+    chat.rows.forEach(element => {
+      //busca si hay dos usuarios por grupo
+      if (element.$relations.usuarios.rows.length==2){
+        existente=element
+      }
+    });
+    //sino existe el elemento lo crea
+    if(!existente){
+    existente = await this.nuevoChat(emisor,remitente)
     }
-    return response.status(201).json({grupo: chat});
+    return response.status(201).json({grupo: existente});
   }
     async busca_grupo(emisor,remitente){
-
-      var seleccionados;
-      var encontrado= await Database.select('*').from('grupo_users').innerJoin('grupos','grupos.id','grupo_users.grupo_id')
-      .whereIn('user_id',[emisor.id,remitente.id])
-      .andWhere('grupos.tipo','personal')
-      .andWhere('grupos.nombre_grupo',emisor.nickname+' '+remitente.nickname);
-
-      encontrado.forEach(element => {
-        console.log(element)
-
-      });
-
+    // busca todos los grupos con tipo personal
+      var encontrado;
+      encontrado= await Grupo.query().where('tipo','personal').with('usuarios',(usuario)=>{
+        //busca si existen los dos ids en el grupo, sino existen manda uno o manda null
+        usuario.whereIn('users.id',[emisor.id,remitente.id])
+      }).fetch()
       return encontrado;
     }
+    //crea la conversación para las personas
     async nuevoChat(emisor,remitente){
-      console.log(remitente);
-      const grupo =await Grupo.create({
+       const grupo =await Grupo.create({
         nombre_grupo: emisor.nickname+' '+ remitente.nickname,
         descripcion: 'personal',
         tipo: 'personal',
