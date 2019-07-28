@@ -95,6 +95,10 @@ class GrupoController {
   onMessage(message) {
     this.socket.broadcastToAll('message', message.usuario);
   }
+
+  onAñadido(message){
+    
+  }
 }
 
 module.exports = GrupoController
