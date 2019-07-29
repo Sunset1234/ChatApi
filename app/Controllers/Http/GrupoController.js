@@ -36,10 +36,11 @@ class GrupoController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
-    var { nombre_grupo, descripcion } = request.all();
+    var { nombre_grupo,tipo, descripcion } = request.all();
 
     const grupo = await Grupo.create({
       nombre_grupo: nombre_grupo,
+      tipo:tipo,
       descripcion: descripcion
     });
 
@@ -123,6 +124,7 @@ class GrupoController {
    */
   async unirseOAbandonar ({ request, response }) {
     var { user_id, grupo_id } = request.all();
+    
 
     var status = null;
 
@@ -146,6 +148,7 @@ class GrupoController {
 
     return response.status(200).json({msg: 'Actualizado', status: status});
   }
+
 }
 
 module.exports = GrupoController

@@ -7,9 +7,8 @@ class UsuarioController {
   }
 
   onMessage(message) {
-    this.socket.broadcastToAll('message', message.usuario);
+    this.socket.broadcastToAll('message', message);
   }
-
 }
 
 module.exports = UsuarioController
